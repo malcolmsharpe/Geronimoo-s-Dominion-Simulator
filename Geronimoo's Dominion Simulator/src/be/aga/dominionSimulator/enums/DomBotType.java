@@ -18,7 +18,8 @@ public enum DomBotType {
    Competitive,
    Casual,
    Fun,
-   Optimized
+   Optimized,
+   AppliesPPR
    
    ;
    
@@ -56,6 +57,9 @@ public enum DomBotType {
 
        case Engine:
            return "Engine";
+   
+       case AppliesPPR:
+           return "Applies PPR";
 
     default :
         return super.toString();
