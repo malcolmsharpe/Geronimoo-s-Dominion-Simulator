@@ -1,3 +1,4 @@
+package be.aga.dominionSimulator.cards;
 //package be.aga.dominionSimulator.cards;
 //
 //import java.util.Collections;

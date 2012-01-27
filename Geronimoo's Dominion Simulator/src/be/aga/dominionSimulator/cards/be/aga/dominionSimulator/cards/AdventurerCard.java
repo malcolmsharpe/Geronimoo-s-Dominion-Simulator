@@ -1,5 +1,7 @@
 package be.aga.dominionSimulator.cards;
 
+
+
 import java.util.ArrayList;
 
 import be.aga.dominionSimulator.DomCard;

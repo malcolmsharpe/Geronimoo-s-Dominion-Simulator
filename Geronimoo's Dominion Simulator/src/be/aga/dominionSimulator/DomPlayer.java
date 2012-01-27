@@ -1055,11 +1055,11 @@ public int getMoneyInHand( ) {
     	  return possessor.suicideIfBuys(aCardName);
     	}
 
-    	if (name.endsWith("1)"))
-    	if ((aCardName==DomCardName.Province || aCardName==DomCardName.Colony) 
-          && game.countInSupply( aCardName )==2  )
-          if (checkPenultimateProvinceRule(aCardName))
-              return true;
+    	if (getTypes().contains(DomBotType.AppliesPPR)
+    	&& (aCardName==DomCardName.Province || aCardName==DomCardName.Colony) 
+        && game.countInSupply( aCardName )==2  
+        && checkPenultimateProvinceRule(aCardName))
+          return true;
         
         if (game.countInSupply( aCardName )!=1)
           return false;
@@ -1094,12 +1094,11 @@ public int getMoneyInHand( ) {
     				continue;
     			if (getCurrentGame().countInSupply(theCard)>0
     			  && countVictoryPoints()<thePlayer.countVictoryPoints()
-    			  && countVictoryPoints()+theCard.getVictoryValue(this)>thePlayer.countVictoryPoints())
+    			  && countVictoryPoints()+theCard.getVictoryValue(this)>thePlayer.countVictoryPoints()) {
+    	            if (DomEngine.haveToLog) DomEngine.addToLog( "Penultimate Province Rule!!!" );
     				return true;
+    			}
     		}
-//            if (DomEngine.haveToLog) DomEngine.addToLog( "PPRs Points = " + countVictoryPoints());
-//            if (DomEngine.haveToLog) DomEngine.addToLog( "Opps Points = " + thePlayer.countVictoryPoints());
-//            if (DomEngine.haveToLog) DomEngine.addToLog( "Penultimate Province Rule!!!" );
           }
         return false;
     }
