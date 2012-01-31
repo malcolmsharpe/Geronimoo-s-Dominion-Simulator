@@ -19,7 +19,9 @@ public enum DomBotType {
    Casual,
    Fun,
    Optimized,
-   AppliesPPR
+   AppliesPPR,
+   ShuffleOverhand,
+   RiffleShuffle
    
    ;
    
@@ -60,6 +62,12 @@ public enum DomBotType {
    
        case AppliesPPR:
            return "Applies PPR";
+
+       case ShuffleOverhand:
+           return "Shuffles Overhand";
+
+       case RiffleShuffle:
+           return "Riffle Shuffles";
 
     default :
         return super.toString();

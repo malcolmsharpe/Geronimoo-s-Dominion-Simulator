@@ -8,6 +8,7 @@ import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.Logger;
 import org.apache.log4j.SimpleLayout;
 
+import be.aga.dominionSimulator.enums.DomBotType;
 import be.aga.dominionSimulator.enums.DomCardName;
 import be.aga.dominionSimulator.enums.DomCardType;
 
@@ -37,14 +38,14 @@ public class DomDeck extends EnumMap< DomCardName, ArrayList<DomCard> > {
     }
 
     public void shuffle() {
-//  	  if (owner.name.endsWith("1)"))
-//		doRiffleShuffle();
-//  	  else  
-//  		if (owner.name.endsWith("2)"))
-//	  	  doOverhandShuffle();
-//  	    else
-    	owner.setKnownTopCards(0);
-      Collections.shuffle( drawDeck );
+      owner.setKnownTopCards(0);
+	  if (owner.getTypes().contains(DomBotType.RiffleShuffle) )
+		doRiffleShuffle();
+  	  else  
+  		if (owner.getTypes().contains(DomBotType.ShuffleOverhand))
+	  	  doOverhandShuffle();
+  	    else
+          Collections.shuffle( drawDeck );
       if (DomEngine.haveToLog) DomEngine.addToLog( owner + " shuffles deck" );
 	  if (count(DomCardName.Stash)>0)
         handleStash();
